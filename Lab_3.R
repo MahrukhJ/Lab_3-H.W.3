@@ -227,6 +227,5 @@ Bronx     Manhattan Staten Island      Brooklyn        Queens
 Bronx     Manhattan Staten Island      Brooklyn        Queens 
 868           862           164          3394          3103 
 
-#The third run generated a significantly higher output than the first and second run, yeilding 65.91586, compared to 35.4 and 36.35, respectively. 
-
+The third run generated a significantly higher output than the first and second run, yeilding 65.91586, compared to 35.4 and 36.35, respectively. 
 Throughout the 3 runs, I was able to conclude that grouping relevant variables together such as poverty status, rent and income will generate higher accuracy in terms of being able to predict neighborhoods. 
