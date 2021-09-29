@@ -1,3 +1,11 @@
+Lab_3#
+
+For this lab, we will use simple k-nn techniques of machine learning to try to guess people’s neighborhoods. Knn is a fancy name for a really simple procedure:
+  
+- take an unclassified observation
+- look for classified observations near it
+- guess that it is like its neighbors
+
 load("~/Desktop/School/Fall 2021/Statistics and Introduction to Econometrics/RStudio Stuff/Ecob2000_lecture1/acs2017_ny_data..RData")
 View(acs2017_ny)
 > attach(acs2017_ny)
