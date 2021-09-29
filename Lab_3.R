@@ -86,29 +86,29 @@ mean(y_hat_v1[cl_data_n1 == 0])
 
 #For the second run, I am combining total income, rent and family size for a possible classification. 
 
-rent_famsize <- RENT + FAMSIZE
-norm_inc_tot <- norm_varb(INCTOT)
-norm_rent_famsize <- norm_varb(rent_famsize)
-data_use_prelim <- data.frame(norm_inc_tot, norm_rent_famsize)
-good_obs_data_use <- complete.cases(data_use_prelim,borough_f)
-dat_use <- subset(data_use_prelim,good_obs_data_use)
-y_use <- subset(borough_f,good_obs_data_use)
-set.seed(12345)
-NN_obs <- sum(good_obs_data_use == 1)
-select1 <- (runif(NN_obs) < 0.8)
-train_data <- subset(dat_use,select1)
-test_data <- subset(dat_use,(!select1))
-cl_data <- y_use[select1]
-true_data <- y_use[!select1]
-summary(cl_data)
+> rent_famsize <- RENT + FAMSIZE
+> norm_inc_tot <- norm_varb(INCTOT)
+> norm_rent_famsize <- norm_varb(rent_famsize)
+> data_use_prelim <- data.frame(norm_inc_tot, norm_rent_famsize)
+> good_obs_data_use <- complete.cases(data_use_prelim,borough_f)
+> dat_use <- subset(data_use_prelim,good_obs_data_use)
+> y_use <- subset(borough_f,good_obs_data_use)
+> set.seed(12345)
+> NN_obs <- sum(good_obs_data_use == 1)
+> select1 <- (runif(NN_obs) < 0.8)
+> train_data <- subset(dat_use,select1)
+> test_data <- subset(dat_use,(!select1))
+> cl_data <- y_use[select1]
+> true_data <- y_use[!select1]
+> summary(cl_data)
 Bronx     Manhattan Staten Island      Brooklyn        Queens 
 4880          5250          1891         12416         10923 
 
-prop.table(summary(cl_data))
+> prop.table(summary(cl_data))
 Bronx     Manhattan Staten Island      Brooklyn        Queens 
 0.13800905    0.14847285    0.05347851    0.35113122    0.30890837 
 
-summary(train_data)
+> summary(train_data)
 norm_inc_tot    norm_rent_famsize
 Min.   :0.0000   Min.   :0.0000   
 1st Qu.:0.9478   1st Qu.:0.6055   
@@ -116,7 +116,7 @@ Median :0.9731   Median :0.8415
 Mean   :0.9574   Mean   :0.7778   
 3rd Qu.:0.9881   3rd Qu.:0.9995   
 Max.   :1.0000   Max.   :1.0000   
-summary(test_data)
+> summary(test_data)
 norm_inc_tot    norm_rent_famsize
 Min.   :0.2375   Min.   :0.0000   
 1st Qu.:0.9492   1st Qu.:0.6055   
@@ -124,7 +124,7 @@ Median :0.9731   Median :0.8677
 Mean   :0.9589   Mean   :0.7818   
 3rd Qu.:0.9884   3rd Qu.:0.9995   
 Max.   :0.9990   Max.   :1.0000  
-suppressMessages(require(class))
+> suppressMessages(require(class))
 for (indx in seq(1, 9, by= 2)) {
   pred_borough1 <- knn(train_data, test_data, cl_data, k = indx, l = 0, prob = FALSE, use.all = TRUE)
   num_correct_labels <- sum(pred_borough1 == true_data)
@@ -195,7 +195,7 @@ Mean   :0.9386    Mean   :0.7233
 3rd Qu.:0.9755    3rd Qu.:0.8850  
 Max.   :1.0000    Max.   :0.9998
 
-suppressMessages(require(class))
+> suppressMessages(require(class))
 > for (indx in seq(1, 9, by= 2)) {
   +     pred_borough1 <- knn(train_data, test_data, cl_data, k = indx, l = 0, prob = FALSE, use.all = TRUE)
   +     num_correct_labels <- sum(pred_borough1 == true_data)
